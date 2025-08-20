@@ -1,13 +1,222 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Haj Poultry</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChickenMart — Fresh Chicken Delivered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to Haj Poultry</h1>
-    <p>Order fresh chicken meat online!</p>
-    <a href="order.php">Place an Order</a>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#">
+        <span class="logo-mark" aria-hidden="true">
+          <!-- Simple drumstick SVG icon (original) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M14.5 3.5c2.8-2.3 7.3-.1 6.8 4-1.1 8.5-10.2 10.9-12.4 8.7-1.2-1.2.3-3 1.3-4 .9-.9.9-2.3 0-3.2-.9-.9-2.3-.9-3.2 0-1 .9-2.8 2.5-4 1.3-2.2-2.2.2-11.3 8.7-12.4 4.1-.5 6.3 4 4 6.8Z" />
+          </svg>
+        </span>
+        <span class="logo-title">ChickenMart</span>
+      </a>
+      <div class="badge">🚚 Same‑day delivery in city limits</div>
+    </div>
+  </header>
+
+  <!-- HERO + ORDER PANEL -->
+  <section class="container hero">
+    <div class="card">
+      <h1 class="headline">Order Fresh & Halal Chicken</h1>
+      <p class="sub">Choose your cut, set the quantity, and we’ll deliver to your door. Cleaned, trimmed, and neatly packed.</p>
+
+      <!-- Product options -->
+      <div class="product-card">
+        <label class="product">
+          <input type="radio" name="cut" value="boneless" data-price="1200" checked />
+          <div>
+            <div style="display:flex; align-items:center; gap:.6rem">
+              <strong>Boneless</strong>
+              <span class="chip">Best Seller</span>
+            </div>
+            <div class="pricing">
+              <div class="pill">Rs <span>1200</span> / kg</div>
+              <div class="pill">Skinless</div>
+              <div class="pill">Lean</div>
+            </div>
+          </div>
+        </label>
+        <label class="product">
+          <input type="radio" name="cut" value="wings" data-price="780" />
+          <div>
+            <strong>Wings</strong>
+            <div class="pricing">
+              <div class="pill">Rs <span>780</span> / kg</div>
+              <div class="pill">Party Favorite</div>
+              <div class="pill">Marinates fast</div>
+            </div>
+          </div>
+        </label>
+        <label class="product">
+          <input type="radio" name="cut" value="drumstick" data-price="950" />
+          <div>
+            <strong>Drumsticks</strong>
+            <div class="pricing">
+              <div class="pill">Rs <span>950</span> / kg</div>
+              <div class="pill">Juicy</div>
+              <div class="pill">Kids' Choice</div>
+            </div>
+          </div>
+        </label>
+        <label class="product">
+          <input type="radio" name="cut" value="whole" data-price="690" />
+          <div>
+            <strong>Whole Chicken (cut 12)</strong>
+            <div class="pricing">
+              <div class="pill">Rs <span>690</span> / kg</div>
+              <div class="pill">Perfect for Curry</div>
+              <div class="pill">Fresh daily</div>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <!-- Quantity & notes -->
+      <div class="panel" style="margin-top:1rem">
+        <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap:1rem">
+          <div class="field">
+            <label for="qty">Quantity (kg)</label>
+            <input id="qty" type="number" min="0.5" step="0.5" value="1" />
+          </div>
+          <div class="field">
+            <label>Cleaning</label>
+            <select id="cleaning">
+              <option value="standard" selected>Standard Clean (free)</option>
+              <option value="premium">Premium Clean + Trim (+Rs 80/kg)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="time">Preferred Delivery Time</label>
+            <select id="time">
+              <option value="asap" selected>ASAP (1–3 hrs)</option>
+              <option value="evening">Evening (5–8 pm)</option>
+              <option value="morning">Morning (8–11 am)</option>
+            </select>
+          </div>
+        </div>
+        <div class="field" style="margin-top:.8rem">
+          <label for="notes">Special instructions (optional)</label>
+          <textarea id="notes" rows="2" placeholder="e.g., extra-trimmed, keep wings whole, no skin..."></textarea>
+        </div>
+      </div>
+
+      <!-- Checkout -->
+      <div class="checkout">
+        <div class="panel">
+          <h3 style="margin-top:0">Delivery Details</h3>
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap:.9rem">
+            <div class="field"><label for="name">Full Name</label><input id="name" placeholder="Your name" required /></div>
+            <div class="field"><label for="phone">Phone</label><input id="phone" placeholder="03XX-XXXXXXX" required /></div>
+            <div class="field" style="grid-column:1/3"><label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" /></div>
+            <div class="field" style="grid-column:1/3"><label for="address">Address</label><input id="address" placeholder="House, Street, Area, City" required /></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 style="margin-top:0">Payment</h3>
+          <div class="field">
+            <select id="payment">
+              <option value="cod" selected>Cash on Delivery (COD)</option>
+              <option value="online">Pay Online (Demo)</option>
+            </select>
+          </div>
+          <div id="cardFields" class="grid hidden" style="grid-template-columns:1fr 1fr; gap:.9rem; margin-top:.6rem">
+            <div class="field"><label>Card Number</label><input placeholder="1111 2222 3333 4444" /></div>
+            <div class="field"><label>Name on Card</label><input placeholder="As on card" /></div>
+            <div class="field"><label>Expiry</label><input placeholder="MM/YY" /></div>
+            <div class="field"><label>CVC</label><input placeholder="123" /></div>
+          </div>
+
+          <div class="summary" style="margin-top:1rem">
+            <div class="row"><span>Subtotal</span><strong id="subtotal">Rs 0</strong></div>
+            <div class="row"><span>Cleaning</span><span id="cleaningCost">Rs 0</span></div>
+            <div class="row"><span>Delivery</span><span id="delivery">Rs 120</span></div>
+            <div class="row"><span>Discount</span><span id="discount">- Rs 0</span></div>
+            <div class="row total"><span>Total</span><strong id="total">Rs 0</strong></div>
+          </div>
+          <button id="placeOrder" class="btn" style="width:100%; margin-top:1rem">Place Order</button>
+          <p style="margin:.5rem 0 0; color:var(--muted); font-size:.85rem">By placing an order, you agree to our terms and privacy policy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual gallery / hero image created with code + optional external image slot -->
+    <div class="gallery">
+      <div class="bg" aria-hidden="true"></div>
+      <div class="img-wrap">
+        <!-- Optional: replace src with a royalty‑free image URL of cooked chicken/wings from your own library. -->
+        <img id="heroImg" alt="Fresh chicken cuts" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='1200'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop offset='0%' stop-color='%231f2937'/><stop offset='100%' stop-color='%230b1220'/></linearGradient><linearGradient id='o' x1='0' x2='1'><stop offset='0%' stop-color='%23f59e0b'/><stop offset='100%' stop-color='%23f97316'/></linearGradient></defs><rect fill='url(%23g)' width='100%' height='100%'/><g opacity='.3'><circle cx='200' cy='300' r='140' fill='url(%23o)'/><circle cx='800' cy='500' r='220' fill='url(%23o)'/><circle cx='1300' cy='250' r='160' fill='url(%23o)'/></g><text x='8%' y='85%' fill='white' font-family='Inter,Arial' font-size='64' font-weight='800'>ChickenMart</text></svg>"/>
+        <div class="caption">100% Halal • Fresh Daily</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" style="margin-top:1rem">
+    <div class="panel">
+      <h3 style="margin-top:0">Why Choose ChickenMart?</h3>
+      <ul style="margin:.2rem 0 0 1.2rem; color:var(--muted)">
+        <li>Fresh stock twice a day, handled in hygienic conditions.</li>
+        <li>Precise cuts (boneless, wings, drumsticks, whole) and custom trimming.</li>
+        <li>Sealed, leak‑proof packaging; rider tracking on request.</li>
+        <li>No middlemen pricing. Transparent per‑kg rates.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap">
+      <div>© <span id="year"></span> ChickenMart. All rights reserved.</div>
+      <div>Made with ❤️ for great food.</div>
+    </div>
+  </footer>
+
+  <!-- ORDER MODAL (simple) -->
+  <dialog id="orderModal" style="border:none; border-radius:18px; padding:0; width:min(560px, 92vw); background:#0b1220; color:var(--text)">
+    <div style="padding:1.2rem; border-bottom:1px solid rgba(148,163,184,.12); display:flex; justify-content:space-between; align-items:center">
+      <strong>Order Placed</strong>
+      <button id="closeModal" class="btn ghost">Close</button>
+    </div>
+    <div style="padding:1rem 1.2rem">
+      <p>Thanks! Your order reference is <strong id="ref"></strong>.</p>
+      <p>We’ve sent a confirmation to <strong id="confirmEmail">your email</strong>. Our rider will call you before delivery.</p>
+      <div class="summary" style="margin-top:1rem">
+        <div class="row"><span>Item</span><span id="sumItem"></span></div>
+        <div class="row"><span>Qty</span><span id="sumQty"></span></div>
+        <div class="row"><span>Payment</span><span id="sumPay"></span></div>
+        <div class="row total"><span>Total Paid</span><strong id="sumTotal"></strong></div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+
+  <!--
+    COPYRIGHT‑FREE IMAGES (OPTIONS):
+    1) Keep the default SVG hero (fully generated here; free to use).
+    2) Replace #heroImg src with your own photo or a royalty‑free link from:
+       - Pexels, Pixabay, Unsplash (search: "raw chicken", "chicken wings", "drumsticks").
+       Ensure attribution according to each site's license (Unsplash & Pexels generally no attribution required).
+
+    LOGO:
+      The logo above is custom SVG generated in this file and is copyright‑free.
+      You can also replace it with text or your own SVG/PNG.
+
+    BACKEND (optional):
+      This page stores orders in localStorage for testing. To make it production‑ready,
+      post `payload` (in the JS above) to your server (Node/PHP) and integrate a payment gateway
+      like JazzCash/Easypaisa/Stripe (if supported in your region).
+  -->
 </body>
 </html>
